@@ -113,19 +113,19 @@ const getAllProperties = function (options, limit = 10) {
   }
   if (options.owner_id) {
     queryParams.push(`%${options.owner_id}%`);
-    queryString += `${queryParams[0] ? 'AND' : 'WHERE'} owner_id LIKE $${queryParams.length} `;
+    queryString += `${(queryParams[1] ? 'AND' : 'WHERE')} owner_id LIKE $${queryParams.length} `;
   }
   if (options.minimum_price_per_night) {
     queryParams.push(`${options.minimum_price_per_night}`);
-    queryString += `${queryParams[0] ? 'AND' : 'WHERE'}  cost_per_night >= $${queryParams.length} `;
+    queryString += `${(queryParams[1] ? 'AND' : 'WHERE')}  cost_per_night >= $${queryParams.length} `;
   }
   if (options.maximum_price_per_night) {
     queryParams.push(`${options.maximum_price_per_night}`);
-    queryString += `${queryParams[0] ? 'AND' : 'WHERE'}  cost_per_night <= $${queryParams.length} `;
+    queryString += `${(queryParams[1] ? 'AND' : 'WHERE')}  cost_per_night <= $${queryParams.length} `;
   }
   if (options.minimum_rating) {
     queryParams.push(`${options.minimum_rating}`);
-    queryString += `${queryParams[0] ? 'AND' : 'WHERE'}  rating >= $${queryParams.length} `;
+    queryString += `${(queryParams[1] ? 'AND' : 'WHERE')}  rating >= $${queryParams.length} `;
   }
 
   // 4
